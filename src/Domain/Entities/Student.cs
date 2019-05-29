@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using PaymentContext.Domain.ValueObject;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -17,7 +17,7 @@ namespace Domain.Entities
         public Name Name { get; private set; }
         public Document Document { get; set; }
         public string Email { get; set; }
-        public string Address { get; set; }
+        public Address Address { get; set; }
         public IReadOnlyList<Subscription> Subscriptions
         {
             get
