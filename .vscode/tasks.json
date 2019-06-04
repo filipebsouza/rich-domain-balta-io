@@ -7,30 +7,22 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/tests/Domain.Tests/Domain.Tests.csproj"
+                "${workspaceFolder}/rich-domain-balta.sln"
             ],
             "problemMatcher": "$tsc"
         },
         {
-            "label": "publish",
+            "label": "tests",
             "command": "dotnet",
             "type": "process",
             "args": [
-                "publish",
+                "test",
                 "${workspaceFolder}/tests/Domain.Tests/Domain.Tests.csproj"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$msCompile",           
+            "isBackground": true,
+            "promptOnClose": true,
+            "group": "test"
         },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/tests/Domain.Tests/Domain.Tests.csproj"
-            ],
-            "problemMatcher": "$tsc"
-        }
     ]
 }

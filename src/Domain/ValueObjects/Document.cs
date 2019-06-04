@@ -1,4 +1,4 @@
-using PaymentContext.Domain.Enums;
+using Domain.Enums;
 using Shared.ValueObjects;
 
 namespace Domain.ValueObjects
