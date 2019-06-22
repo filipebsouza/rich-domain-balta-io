@@ -1,8 +1,9 @@
 using System;
+using Flunt.Notifications;
 
 namespace Shared.Entities.Shared
 {
-    public abstract class Entity
+    public abstract class Entity : Notifiable
     {
         public Entity(Guid id)
         {

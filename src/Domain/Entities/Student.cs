@@ -1,22 +1,26 @@
+using System;
 using System.Collections.Generic;
 using Domain.ValueObjects;
+using Shared.Entities.Shared;
 
 namespace Domain.Entities
 {
-    public class Student
+    public class Student : Entity
     {
         private List<Subscription> _subscriptions;
 
-        public Student(Name name, Document document, string email)
+        public Student(Name name, Document document, Email email)
         {
             Name = name;
             Document = document;
             Email = email;
             _subscriptions = new List<Subscription>();
+
+            AddNotifications(name, document, email);
         }
         public Name Name { get; private set; }
         public Document Document { get; set; }
-        public string Email { get; set; }
+        public Email Email { get; set; }
         public Address Address { get; set; }
         public IReadOnlyList<Subscription> Subscriptions
         {
