@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Domain.ValueObjects;
+using Flunt.Validations;
 using Shared.Entities.Shared;
 
 namespace Domain.Entities
@@ -30,12 +31,27 @@ namespace Domain.Entities
             }
         }
 
-        public void AddSubsciption(Subscription subscription)
+
+        public void AddSubscription(Subscription subscription)
         {
-            foreach (var sub in Subscriptions)
+            var hasSubscriptionActive = false;
+            foreach (var sub in _subscriptions)
             {
-                sub.Inactive();
+                if (sub.Active)
+                    hasSubscriptionActive = true;
             }
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já tem uma assinatura ativa")
+                .AreNotEquals(0, subscription.Payments.Count, "Student.Subscription.Payments", "Esta assinatura não possui pagamentos")
+            );
+
+            if (Valid)
+                _subscriptions.Add(subscription);
+            // Alternativa
+            // if (hasSubscriptionActive)
+            //     AddNotification("Student.Subscriptions", "Você já tem uma assinatura ativa");
         }
     }
 }

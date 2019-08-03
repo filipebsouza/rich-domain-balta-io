@@ -5,7 +5,7 @@ namespace Shared.Entities.Shared
 {
     public abstract class Entity : Notifiable
     {
-        public Entity(Guid id)
+        public Entity()
         {
             Id = Guid.NewGuid();
         }

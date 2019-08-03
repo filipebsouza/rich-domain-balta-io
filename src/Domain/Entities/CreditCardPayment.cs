@@ -3,10 +3,12 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
-    public class PayPalPayment : Payment
+    public class CreditCardPayment : Payment
     {
-        public PayPalPayment(
-             string transactionCode,
+        public CreditCardPayment(
+             string cardHolderName,
+             string cardNumber,
+             string lastTransactionNumber,
              DateTime paidDate,
              DateTime expireDate,
              decimal total,
@@ -24,9 +26,13 @@ namespace Domain.Entities
                  address,
                  email)
         {
-            TransactionCode = transactionCode;
+            CardHolderName = cardHolderName;
+            CardNumber = cardNumber;
+            LastTransactionNumber = lastTransactionNumber;
         }
 
-        public string TransactionCode { get; private set; }
+        public string CardHolderName { get; private set; }
+        public string CardNumber { get; private set; }
+        public string LastTransactionNumber { get; private set; }
     }
 }
