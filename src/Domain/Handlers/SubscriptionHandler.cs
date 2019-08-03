@@ -81,6 +81,10 @@ namespace Domain.Handlers
             //Agrupar Validações
             AddNotifications(name, document, email, address, student, subscription, payment);
 
+            //Checar as notificações
+            if (Invalid)
+                return new CommandResult(false, "Não foi possível realizar sua assinatura.");
+
             //Salvar as Informações
             _repository.CreateSubscription(student);
 
@@ -147,6 +151,10 @@ namespace Domain.Handlers
 
             //Agrupar Validações
             AddNotifications(name, document, email, address, student, subscription, payment);
+
+            //Checar as notificações
+            if (Invalid)
+                return new CommandResult(false, "Não foi possível realizar sua assinatura.");
 
             //Salvar as Informações
             _repository.CreateSubscription(student);

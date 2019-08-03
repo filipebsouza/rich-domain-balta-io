@@ -1,10 +1,7 @@
-using System;
-using Domain.Entities;
-using Domain.Enums;
 using Domain.ValueObjects;
 using Xunit;
 
-namespace Domain.Tests
+namespace Domain.Tests.Entities
 {
     public class StudentTests
     {
@@ -15,7 +12,6 @@ namespace Domain.Tests
             foreach (var not in name.Notifications)
             {
                var teste = not.Message;
-
             }
 
             Assert.True(true);
